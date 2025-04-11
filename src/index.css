@@ -99,4 +99,8 @@
   .pixel-heading {
     @apply font-pixel text-xl sm:text-2xl mb-6 text-pixel-purple dark:text-pixel-green;
   }
+  
+  .pixel-dock-item {
+    @apply hover:scale-125 transition-transform duration-150 ease-in-out;
+  }
 }
