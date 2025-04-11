@@ -6,6 +6,20 @@ import ThemeToggle from './ThemeToggle';
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const target = document.querySelector(href);
+    if (target) {
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+      if (isMenuOpen) {
+        setIsMenuOpen(false);
+      }
+    }
+  };
+
   const navItems = [
     { name: "Home", href: "#home" },
     { name: "About", href: "#about" },
@@ -44,7 +58,7 @@ export default function Navigation() {
                     <a
                       href={item.href}
                       className="block font-pixel text-sm py-2 px-4 border-2 border-black dark:border-white hover:bg-pixel-green dark:hover:bg-pixel-purple transition-colors"
-                      onClick={() => setIsMenuOpen(false)}
+                      onClick={(e) => handleNavClick(e, item.href)}
                     >
                       {item.name}
                     </a>
@@ -64,6 +78,7 @@ export default function Navigation() {
                   <a
                     href={item.href}
                     className="font-pixel text-sm hover:text-pixel-purple dark:hover:text-pixel-green transition-colors"
+                    onClick={(e) => handleNavClick(e, item.href)}
                   >
                     {item.name}
                   </a>

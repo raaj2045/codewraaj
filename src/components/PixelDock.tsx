@@ -51,6 +51,17 @@ export default function PixelDock() {
     }
   };
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const target = document.querySelector(href);
+    if (target) {
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
+  };
+
   const navItems = [
     {
       title: 'Home',
@@ -86,6 +97,7 @@ export default function PixelDock() {
           <DockItem
             key={idx}
             href={item.href}
+            onClick={(e) => handleNavClick(e, item.href)}
             className='aspect-square bg-white dark:bg-black'
           >
             <DockLabel>{item.title}</DockLabel>
