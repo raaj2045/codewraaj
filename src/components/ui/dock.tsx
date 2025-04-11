@@ -24,7 +24,7 @@ const DockItem = React.forwardRef<
   <a
     ref={ref}
     className={cn(
-      "flex h-12 w-12 items-center justify-center rounded-lg p-1.5 pixel-borders transition-all duration-300 hover:scale-110 group-hover:[&:not(:hover)]:opacity-80",
+      "relative flex h-12 w-12 items-center justify-center rounded-lg p-1.5 pixel-borders transition-all duration-300 hover:scale-110 hover:z-10",
       className
     )}
     {...props}
@@ -51,7 +51,7 @@ const DockLabel = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      "absolute -top-9 left-1/2 -translate-x-1/2 rounded-md bg-black/80 dark:bg-white/80 px-2 py-1 text-xs text-white dark:text-black font-pixel opacity-0 transition-opacity duration-300 group-hover:opacity-100",
+      "absolute -top-9 left-1/2 -translate-x-1/2 rounded-md bg-black/80 dark:bg-white/80 px-2 py-1 text-xs text-white dark:text-black font-pixel opacity-0 transition-opacity duration-300 group-hover:opacity-0 hover:opacity-100",
       className
     )}
     {...props}

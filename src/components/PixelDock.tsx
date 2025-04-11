@@ -77,11 +77,6 @@ export default function PixelDock() {
       icon: <Mail className='h-full w-full text-pixel-green dark:text-pixel-purple' />,
       href: '#contact',
     },
-    {
-      title: isDarkMode ? 'Light Mode' : 'Dark Mode',
-      icon: <SunMoon className='h-full w-full text-pixel-green dark:text-pixel-purple' />,
-      onClick: toggleTheme,
-    },
   ];
 
   return (
@@ -91,13 +86,21 @@ export default function PixelDock() {
           <DockItem
             key={idx}
             href={item.href}
-            onClick={item.onClick}
             className='aspect-square bg-white dark:bg-black'
           >
             <DockLabel>{item.title}</DockLabel>
             <DockIcon>{item.icon}</DockIcon>
           </DockItem>
         ))}
+        <DockItem
+          onClick={toggleTheme}
+          className='aspect-square bg-white dark:bg-black'
+        >
+          <DockLabel>{isDarkMode ? 'Light Mode' : 'Dark Mode'}</DockLabel>
+          <DockIcon>
+            <SunMoon className='h-full w-full text-pixel-green dark:text-pixel-purple' />
+          </DockIcon>
+        </DockItem>
       </Dock>
     </div>
   );
