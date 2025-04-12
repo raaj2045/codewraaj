@@ -24,14 +24,18 @@ export default function PixelParallax() {
 
   useEffect(() => {
     // Check for dark mode
-    const isDark = document.documentElement.classList.contains('dark');
-    setIsDarkMode(isDark);
+    const checkDarkMode = () => {
+      const isDark = document.documentElement.classList.contains('dark');
+      setIsDarkMode(isDark);
+    };
+    
+    checkDarkMode();
 
     // Listen for theme changes
     const observer = new MutationObserver(mutations => {
       mutations.forEach(mutation => {
         if (mutation.attributeName === 'class') {
-          setIsDarkMode(document.documentElement.classList.contains('dark'));
+          checkDarkMode();
         }
       });
     });
@@ -54,7 +58,7 @@ export default function PixelParallax() {
   const layers = isDarkMode ? darkModeLayers : lightModeLayers;
 
   return (
-    <div className="fixed inset-0 w-full h-full -z-10 overflow-hidden">
+    <div className="fixed inset-0 w-full h-screen -z-10 overflow-hidden">
       {layers.map((layer, index) => (
         <div 
           key={index}
@@ -65,7 +69,16 @@ export default function PixelParallax() {
             transition: 'transform 0.1s ease-out',
           }}
         >
-          <div className={`w-full h-full bg-repeat-x pixel-bg-${isDarkMode ? 'dark' : 'light'}-${layer.image}`}></div>
+          <div 
+            className={`w-full h-full bg-repeat-x bg-[length:100px_100px] pixel-bg-${isDarkMode ? 'dark' : 'light'}-${layer.image}`}
+            style={{ 
+              backgroundSize: layer.image.includes('ground') ? '100px 20px' : 
+                             layer.image.includes('trees') ? '120px 100px' : 
+                             layer.image.includes('mountains') ? '300px 100px' : 
+                             layer.image.includes('clouds') || layer.image.includes('stars') ? '200px 100px' : 
+                             '100px 100px'
+            }}
+          ></div>
         </div>
       ))}
     </div>
