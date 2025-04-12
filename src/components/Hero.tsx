@@ -5,7 +5,7 @@ export default function Hero() {
   return (
     <section id="home" className="pt-20 min-h-screen flex flex-col justify-center relative overflow-hidden">
       <div className="container mx-auto px-4 py-12 sm:py-20">
-        <div className="max-w-3xl mx-auto text-center">
+        <div className="max-w-3xl mx-auto text-center bg-white/80 dark:bg-black/80 backdrop-blur-sm p-8 rounded-xl">
           <h1 className="font-pixel text-4xl sm:text-5xl mb-6 leading-tight">
             <span className="block">Hello World!</span>
             <span className="inline-block text-pixel-green dark:text-pixel-purple animate-float">
@@ -36,8 +36,15 @@ export default function Hero() {
       <div className="absolute bottom-10 left-0 right-0 flex justify-center">
         <a 
           href="#about" 
-          className="animate-float w-10 h-10 flex items-center justify-center border-2 border-black dark:border-white rounded"
+          className="animate-float w-10 h-10 flex items-center justify-center border-2 border-black dark:border-white rounded bg-white/80 dark:bg-black/80"
           aria-label="Scroll to About section"
+          onClick={(e) => {
+            e.preventDefault();
+            document.querySelector('#about')?.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start',
+            });
+          }}
         >
           <ChevronDown className="w-6 h-6" />
         </a>
