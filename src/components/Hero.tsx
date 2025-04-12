@@ -1,59 +1,68 @@
-
-import { ChevronDown } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import whiteTrain from '../assets/white-train-bg.gif';
 
 export default function Hero() {
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <section id="home" className="pt-20 min-h-screen flex flex-col justify-center relative overflow-hidden">
-      <div className="container mx-auto px-4 py-12 sm:py-20">
-        <div className="max-w-3xl mx-auto text-center bg-white/80 dark:bg-black/80 backdrop-blur-sm p-8 rounded-xl">
-          <h1 className="font-pixel text-4xl sm:text-5xl mb-6 leading-tight">
-            <span className="block">Hello World!</span>
-            <span className="inline-block text-pixel-green dark:text-pixel-purple animate-float">
-              I'm <span className="text-pixel-purple dark:text-pixel-green">Alex</span>
-            </span>
-          </h1>
-          
-          <div className="font-pixel-body text-xl sm:text-2xl mb-8 relative animate-pixel-fade">
-            <p className="mb-2">
-              &lt;Software Engineer/&gt;
-            </p>
-            <p className="inline-block after:content-['_'] after:animate-blink">
-              Building pixel-perfect experiences
-            </p>
-          </div>
-          
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <a href="#projects" className="pixel-button bg-pixel-green">
-              View Projects
-            </a>
-            <a href="#contact" className="pixel-button bg-pixel-purple text-white dark:text-black">
-              Contact Me
-            </a>
+      {/* Background GIF for light mode */}
+      <div 
+        className="absolute inset-0 overflow-hidden opacity-50 dark:opacity-0 transition-opacity duration-300"
+        style={{
+          transform: `translateY(${scrollY * 0.5}px)`,
+          transition: 'transform 0.1s ease-out'
+        }}
+      >
+        <img 
+          src={whiteTrain} 
+          alt="White themed background with train" 
+          className="w-full h-[120%] object-cover"
+          style={{
+            marginTop: '-10%'
+          }}
+        />
+      </div>
+
+      <div className="container mx-auto px-4 py-12 sm:py-20 relative z-10">
+        <div className="w-[50%] h-[40vh] mx-auto text-center bg-white/60 dark:bg-black/60 backdrop-blur-0 p-12 rounded-xl relative flex flex-col justify-center">
+          <div className="relative z-10">
+            <h1 className="font-pixel text-4xl sm:text-5xl mb-8 leading-tight">
+              <span className="block">Hello World!</span>
+              <span className="inline-block text-pixel-green dark:text-pixel-purple animate-float">
+                I'm <span className="text-pixel-purple dark:text-pixel-green">Raaj</span>
+              </span>
+            </h1>
+            
+            <div className="font-pixel-body text-xl sm:text-2xl mb-10 relative animate-pixel-fade">
+              <p className="mb-2">
+                &lt;Software Engineer (Full Stack)/&gt;
+              </p>
+              <p className="inline-block after:content-['_'] after:animate-blink">
+                Building pixel-perfect experiences
+              </p>
+            </div>
+            
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <a href="#projects" className="pixel-button bg-pixel-green">
+                View Projects
+              </a>
+              <a href="#contact" className="pixel-button bg-pixel-purple text-white dark:text-black">
+                Contact Me
+              </a>
+            </div>
           </div>
         </div>
       </div>
-      
-      <div className="absolute bottom-10 left-0 right-0 flex justify-center">
-        <a 
-          href="#about" 
-          className="animate-float w-10 h-10 flex items-center justify-center border-2 border-black dark:border-white rounded bg-white/80 dark:bg-black/80"
-          aria-label="Scroll to About section"
-          onClick={(e) => {
-            e.preventDefault();
-            document.querySelector('#about')?.scrollIntoView({
-              behavior: 'smooth',
-              block: 'start',
-            });
-          }}
-        >
-          <ChevronDown className="w-6 h-6" />
-        </a>
-      </div>
-      
-      {/* Pixel Art Decorations */}
-      <div className="absolute top-20 left-10 w-8 h-8 bg-pixel-red border-2 border-black dark:border-white hidden sm:block"></div>
-      <div className="absolute top-40 right-20 w-6 h-6 bg-pixel-blue border-2 border-black dark:border-white hidden sm:block"></div>
-      <div className="absolute bottom-40 left-20 w-4 h-4 bg-pixel-yellow border-2 border-black dark:border-white hidden sm:block"></div>
     </section>
   );
 }

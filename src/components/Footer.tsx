@@ -6,8 +6,8 @@ export default function Footer() {
         <div className="flex flex-col sm:flex-row justify-between items-center">
           <div className="mb-4 sm:mb-0">
             <div className="font-pixel text-lg">
-              <span className="text-pixel-green">Dev</span>
-              <span className="text-pixel-purple">Quest</span>
+              <span className="text-pixel-green">CodeW</span>
+              <span className="text-pixel-purple">Raaj</span>
             </div>
             <p className="font-pixel-body mt-1">© {new Date().getFullYear()} - All rights reserved</p>
           </div>

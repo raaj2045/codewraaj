@@ -1,20 +1,39 @@
-
 import { Code, BookOpen, Coffee } from 'lucide-react';
+import meWhite from '../assets/me-white.png';
+import meDark from '../assets/me-dark.png';
+import starWarsWhite from '../assets/starwars-white.png';
 
 export default function About() {
   return (
-    <section id="about" className="py-20 bg-gray-100 dark:bg-gray-900">
-      <div className="container mx-auto px-4">
+    <section id="about" className="py-20 bg-gray-100 dark:bg-gray-900 relative">
+      {/* Background image for light theme */}
+      <div className="absolute inset-0 w-[80%] h-[80%] block dark:hidden left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2">
+        <img 
+          src={starWarsWhite} 
+          alt="Star Wars themed background" 
+          className="w-full h-full object-cover opacity-30"
+        />
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
         <h2 className="pixel-heading text-center">ABOUT ME</h2>
         
         <div className="max-w-4xl mx-auto">
-          <div className="pixel-container flex flex-col md:flex-row gap-8 mb-8">
+          <div className="pixel-container flex flex-col md:flex-row gap-8 mb-8 bg-white/40 dark:bg-black/40 backdrop-blur-sm">
             <div className="md:w-1/3 flex justify-center">
-              <div className="w-48 h-48 bg-pixel-blue overflow-hidden pixel-borders">
-                {/* Placeholder for pixel art avatar - replace with actual image */}
-                <div className="w-full h-full bg-gradient-to-br from-pixel-purple to-pixel-blue flex items-center justify-center">
-                  <span className="font-pixel text-2xl text-white">:)</span>
-                </div>
+              <div className="w-48 h-48 overflow-hidden pixel-borders relative">
+                {/* Light theme image */}
+                <img 
+                  src={meWhite} 
+                  alt="Profile picture light theme" 
+                  className="w-full h-full object-cover block dark:hidden"
+                />
+                {/* Dark theme image */}
+                <img 
+                  src={meDark} 
+                  alt="Profile picture dark theme" 
+                  className="w-full h-full object-cover hidden dark:block"
+                />
               </div>
             </div>
             
@@ -51,7 +70,7 @@ export default function About() {
                 description: "Fueled by curiosity and a good cup of coffee."
               }
             ].map((item, index) => (
-              <div key={index} className="pixel-container text-center group hover:bg-pixel-green dark:hover:bg-pixel-purple transition-colors">
+              <div key={index} className="pixel-container text-center group hover:bg-pixel-green dark:hover:bg-pixel-purple transition-colors bg-white/30 dark:bg-black/30 backdrop-blur-sm">
                 <div className="flex flex-col items-center">
                   {item.icon}
                   <h3 className="font-pixel text-lg mb-2 group-hover:text-black dark:group-hover:text-white">{item.title}</h3>
