@@ -6,31 +6,31 @@ export default function Skills() {
     {
       name: "Frontend",
       skills: [
-        { name: "React", level: 90 },
-        { name: "JavaScript", level: 85 },
-        { name: "TypeScript", level: 80 },
-        { name: "HTML/CSS", level: 90 },
-        { name: "Tailwind", level: 85 }
+        { name: "React/Next.js", level: 90 },
+        { name: "Angular", level: 85 },
+        { name: "TypeScript", level: 90 },
+        { name: "Microfrontends", level: 85 },
+        { name: "Module Federation", level: 80 }
       ]
     },
     {
       name: "Backend",
       skills: [
-        { name: "Node.js", level: 80 },
-        { name: "Express", level: 75 },
-        { name: "MongoDB", level: 70 },
-        { name: "PostgreSQL", level: 65 },
-        { name: "GraphQL", level: 60 }
+        { name: "Node.js", level: 90 },
+        { name: "Spring Boot", level: 85 },
+        { name: "FastAPI", level: 80 },
+        { name: "Kafka", level: 75 },
+        { name: "Redis", level: 75 }
       ]
     },
     {
-      name: "Tools",
+      name: "DevOps & Cloud",
       skills: [
-        { name: "Git", level: 85 },
-        { name: "Docker", level: 70 },
-        { name: "AWS", level: 65 },
-        { name: "CI/CD", level: 60 },
-        { name: "Jest", level: 75 }
+        { name: "Kubernetes", level: 85 },
+        { name: "Docker", level: 85 },
+        { name: "GitLab CI/CD", level: 90 },
+        { name: "AWS/GCP/Azure", level: 80 },
+        { name: "Cloud Foundry", level: 75 }
       ]
     }
   ];
@@ -89,11 +89,12 @@ export default function Skills() {
           
           <div className="mt-12 text-center">
             <div className="inline-block pixel-container bg-pixel-yellow/60 dark:bg-black/40 backdrop-blur-sm">
-              <h3 className="font-pixel text-black dark:text-white mb-4">Power-Ups & Achievements</h3>
+              <h3 className="font-pixel text-black dark:text-white mb-4">Expertise & Achievements</h3>
               <div className="flex flex-wrap justify-center gap-3">
                 {[
-                  "Problem Solver", "Fast Learner", "Team Player", 
-                  "Detail Oriented", "Creative Thinker", "Agile Methodologies"
+                  "System Design", "Distributed Systems", "Cybersecurity",
+                  "CI/CD Expert", "Test-Driven Development", "Team Leadership",
+                  "Cross-Team Collaboration", "Accessibility", "AI Integration"
                 ].map((item, index) => (
                   <div 
                     key={index} 

@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Mail, Linkedin, Github, Twitter } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
@@ -17,19 +16,42 @@ export default function Contact() {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
+    // Onclick open mail client
+    window.open(`mailto:raaj2045@gmail.com?subject=Contact from Portfolio&body=${encodeURIComponent(formData.message)}`, '_blank');
+    // setIsSubmitting(true);
     
-    // Simulate form submission
-    setTimeout(() => {
-      toast({
-        title: "Message sent successfully!",
-        description: "I'll get back to you as soon as possible.",
-      });
-      setFormData({ name: '', email: '', message: '' });
-      setIsSubmitting(false);
-    }, 1500);
+    // try {
+    //   const response = await fetch('/api/contact', {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify(formData),
+    //   });
+
+    //   const data = await response.json();
+
+    //   if (!response.ok) {
+    //     throw new Error(data.error || 'Failed to send message');
+    //   }
+
+    //   toast({
+    //     title: "Message sent successfully!",
+    //     description: "I'll get back to you as soon as possible.",
+    //   });
+    //   setFormData({ name: '', email: '', message: '' });
+    // } catch (error) {
+    //   console.error('Contact form error:', error);
+    //   toast({
+    //     title: "Failed to send message",
+    //     description: error instanceof Error ? error.message : "Please try again or contact me directly via email.",
+    //     variant: "destructive"
+    //   });
+    // } finally {
+    //   setIsSubmitting(false);
+    // }
   };
 
   return (
@@ -102,10 +124,10 @@ export default function Contact() {
                 
                 <div className="space-y-4">
                   {[
-                    { icon: <Mail className="w-5 h-5" />, text: "email@example.com", href: "mailto:email@example.com" },
-                    { icon: <Linkedin className="w-5 h-5" />, text: "linkedin.com/in/username", href: "https://linkedin.com" },
-                    { icon: <Github className="w-5 h-5" />, text: "github.com/username", href: "https://github.com" },
-                    { icon: <Twitter className="w-5 h-5" />, text: "@username", href: "https://twitter.com" }
+                    { icon: <Mail className="w-5 h-5" />, text: "raaj2045@gmail.com", href: "mailto:raaj2045@gmail.com" },
+                    { icon: <Linkedin className="w-5 h-5" />, text: "https://linkedin.com/raaj-anand-mishra", href: "https://linkedin.com/raaj-anand-mishra" },
+                    { icon: <Github className="w-5 h-5" />, text: "https://github.com/raaj2045", href: "https://github.com/raaj2045" },
+                    // { icon: <Twitter className="w-5 h-5" />, text: "@username", href: "https://twitter.com" }
                   ].map((item, index) => (
                     <a
                       key={index}

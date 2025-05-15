@@ -1,39 +1,30 @@
-
 import { ExternalLink, Github } from 'lucide-react';
 
 export default function Projects() {
   const projects = [
     {
-      title: "Pixel Weather App",
-      description: "A weather application with retro pixel art style, built with React and OpenWeather API.",
-      tags: ["React", "API", "CSS", "OpenWeather"],
+      title: "Secret Echo - AI Chat Companion",
+      description: "A real-time 1-to-1 messaging application with simulated AI responses. Features JWT authentication, real-time messaging with Socket.io, and offline message persistence.",
+      tags: ["Next.js", "Node.js", "MongoDB", "Socket.io", "JWT", "Tailwind CSS"],
       image: "/placeholder.svg",
-      githubLink: "https://github.com",
-      liveLink: "https://example.com"
+      githubLink: "https://github.com/raaj2045/secret-echo",
+      liveLink: "https://secret-echo-sigma.vercel.app/"
     },
     {
-      title: "Task Quest",
-      description: "A gamified task management app that makes productivity fun with pixel art rewards.",
-      tags: ["React", "Node.js", "MongoDB", "Express"],
+      title: "Ticketing Platform",
+      description: "A microservices-based ticket booking application with features like authentication, ticket creation, and order management. Built with a focus on scalability and reliability.",
+      tags: ["TypeScript", "Node.js", "Express", "MongoDB", "Docker", "Kubernetes"],
       image: "/placeholder.svg",
-      githubLink: "https://github.com",
-      liveLink: "https://example.com"
+      githubLink: "https://github.com/raaj2045/ticketing",
+      liveLink: ""
     },
     {
-      title: "Retro Code Editor",
-      description: "A code editor with syntax highlighting and a nostalgic UI inspired by old-school IDEs.",
-      tags: ["JavaScript", "CodeMirror", "CSS"],
+      title: "NatalCare Hub",
+      description: "A PoC application designed to empower expecting mothers with comprehensive prenatal care tools and resources, making pregnancy management more accessible and informed.",
+      tags: ["React", "Node.js", "Healthcare", "UI/UX", "Mobile-First"],
       image: "/placeholder.svg",
-      githubLink: "https://github.com",
-      liveLink: "https://example.com"
-    },
-    {
-      title: "Pixel Art Generator",
-      description: "A tool that helps users create and export pixel art sprites for games and websites.",
-      tags: ["Canvas API", "JavaScript", "HTML5"],
-      image: "/placeholder.svg",
-      githubLink: "https://github.com",
-      liveLink: "https://example.com"
+      githubLink: "https://github.com/raaj2045/natalcare-hub",
+      liveLink: "https://natalcare-hub.vercel.app/"
     }
   ];
 
@@ -48,53 +39,49 @@ export default function Projects() {
               <div key={index} className="pixel-container group hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] transition-all">
                 <div className="relative mb-4 overflow-hidden border-2 border-black dark:border-white">
                   <img 
-                    src={project.image} 
-                    alt={project.title} 
-                    className="w-full h-48 object-cover transition-transform group-hover:scale-105"
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-48 object-cover"
                   />
-                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="flex gap-4">
-                      <a 
-                        href={project.githubLink} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="p-2 bg-white text-black rounded-full hover:bg-pixel-green transition-colors"
-                      >
-                        <Github className="w-6 h-6" />
-                      </a>
-                      <a 
-                        href={project.liveLink} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="p-2 bg-white text-black rounded-full hover:bg-pixel-purple transition-colors"
-                      >
-                        <ExternalLink className="w-6 h-6" />
-                      </a>
-                    </div>
-                  </div>
                 </div>
-                
-                <h3 className="font-pixel text-lg mb-2 text-pixel-purple dark:text-pixel-green">{project.title}</h3>
-                <p className="font-pixel-body mb-4">{project.description}</p>
-                
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag, tagIndex) => (
-                    <span 
-                      key={tagIndex} 
-                      className="px-2 py-1 text-xs font-pixel bg-gray-200 dark:bg-gray-700 border border-black dark:border-white"
+                <div className="p-4">
+                  <h3 className="text-xl font-bold mb-2">{project.title}</h3>
+                  <p className="text-gray-600 dark:text-gray-300 mb-4">{project.description}</p>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.tags.map((tag, tagIndex) => (
+                      <span 
+                        key={tagIndex}
+                        className="px-2 py-1 text-sm bg-gray-200 dark:bg-gray-700 rounded"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <a
+                      href={project.githubLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white"
                     >
-                      {tag}
-                    </span>
-                  ))}
+                      <Github className="mr-2" size={20} />
+                      Code
+                    </a>
+                    {project.liveLink && (
+                      <a
+                        href={project.liveLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white"
+                      >
+                        <ExternalLink className="mr-2" size={20} />
+                        Live Demo
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
             ))}
-          </div>
-          
-          <div className="mt-12 text-center">
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="pixel-button">
-              See More on GitHub
-            </a>
           </div>
         </div>
       </div>
