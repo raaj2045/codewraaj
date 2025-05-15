@@ -4,8 +4,8 @@ export default function Projects() {
   const projects = [
     {
       title: "Secret Echo - AI Chat Companion",
-      description: "A real-time 1-to-1 messaging application with simulated AI responses. Features JWT authentication, real-time messaging with Socket.io, and offline message persistence.",
-      tags: ["Next.js", "Node.js", "MongoDB", "Socket.io", "JWT", "Tailwind CSS"],
+      description: "A real-time 1-to-1 messaging application with simulated AI responses, featuring JWT authentication, real-time messaging with Socket.io, and offline message persistence.",
+      tags: ["Next.js", "Node.js", "MongoDB", "Socket.io", "JWT", "TailwindCSS"],
       image: "/placeholder.svg",
       githubLink: "https://github.com/raaj2045/secret-echo",
       liveLink: "https://secret-echo-sigma.vercel.app/"
@@ -16,7 +16,7 @@ export default function Projects() {
       tags: ["TypeScript", "Node.js", "Express", "MongoDB", "Docker", "Kubernetes"],
       image: "/placeholder.svg",
       githubLink: "https://github.com/raaj2045/ticketing",
-      liveLink: ""
+      liveLink: null
     },
     {
       title: "NatalCare Hub",
@@ -39,49 +39,62 @@ export default function Projects() {
               <div key={index} className="pixel-container group hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] transition-all">
                 <div className="relative mb-4 overflow-hidden border-2 border-black dark:border-white">
                   <img 
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-48 object-cover"
+                    src={project.image} 
+                    alt={project.title} 
+                    className="w-full h-48 object-cover transition-transform group-hover:scale-105"
                   />
+                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="flex gap-4">
+                      <a 
+                        href={project.githubLink} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="p-2 bg-white text-black rounded-full hover:bg-pixel-green transition-colors"
+                      >
+                        <Github className="w-6 h-6" />
+                      </a>
+                      {project.liveLink && (
+                        <a 
+                          href={project.liveLink} 
+                          target="_blank"
+                          rel="noopener noreferrer" 
+                          className="p-2 bg-white text-black rounded-full hover:bg-pixel-purple transition-colors"
+                        >
+                          <ExternalLink className="w-6 h-6" />
+                        </a>
+                      )}
+                    </div>
+                  </div>
                 </div>
+                
                 <div className="p-4">
-                  <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                  <p className="text-gray-600 dark:text-gray-300 mb-4">{project.description}</p>
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  <h3 className="font-pixel text-lg mb-2 text-pixel-purple dark:text-pixel-green">{project.title}</h3>
+                  <p className="font-pixel-body mb-4">{project.description}</p>
+                  
+                  <div className="flex flex-wrap gap-2">
                     {project.tags.map((tag, tagIndex) => (
                       <span 
-                        key={tagIndex}
-                        className="px-2 py-1 text-sm bg-gray-200 dark:bg-gray-700 rounded"
+                        key={tagIndex} 
+                        className="px-2 py-1 text-xs font-pixel bg-gray-200 dark:bg-gray-700 border border-black dark:border-white"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
-                  <div className="flex justify-between items-center">
-                    <a
-                      href={project.githubLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white"
-                    >
-                      <Github className="mr-2" size={20} />
-                      Code
-                    </a>
-                    {project.liveLink && (
-                      <a
-                        href={project.liveLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white"
-                      >
-                        <ExternalLink className="mr-2" size={20} />
-                        Live Demo
-                      </a>
-                    )}
-                  </div>
                 </div>
               </div>
             ))}
+          </div>
+          
+          <div className="mt-12 text-center">
+            <a 
+              href="https://github.com/raaj2045" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="pixel-button"
+            >
+              See More on GitHub
+            </a>
           </div>
         </div>
       </div>
