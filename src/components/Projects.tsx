@@ -1,4 +1,8 @@
 import { ExternalLink, Github } from 'lucide-react';
+import gseImage from '../assets/gse.png';
+import natalCareImage from '../assets/natalcare.png';
+import secretEchoImage from '../assets/secretecho.png';
+import ticketingImage from '../assets/ticketing.png';
 
 export default function Projects() {
   const projects = [
@@ -6,25 +10,33 @@ export default function Projects() {
       title: "Secret Echo - AI Chat Companion",
       description: "A real-time 1-to-1 messaging application with simulated AI responses, featuring JWT authentication, real-time messaging with Socket.io, and offline message persistence.",
       tags: ["Next.js", "Node.js", "MongoDB", "Socket.io", "JWT", "TailwindCSS"],
-      image: "/placeholder.svg",
+      image: secretEchoImage,
       githubLink: "https://github.com/raaj2045/secret-echo",
       liveLink: "https://secret-echo-sigma.vercel.app/"
     },
     {
-      title: "Ticketing Platform",
+      title: "Ticketing Platform (In Progress)",
       description: "A microservices-based ticket booking application with features like authentication, ticket creation, and order management. Built with a focus on scalability and reliability.",
-      tags: ["TypeScript", "Node.js", "Express", "MongoDB", "Docker", "Kubernetes"],
-      image: "/placeholder.svg",
+      tags: ["TypeScript","React.js", "Node.js", "Express", "MongoDB", "Docker", "Kubernetes"],
+      image: ticketingImage,
       githubLink: "https://github.com/raaj2045/ticketing",
-      liveLink: null
+      liveLink: "https://stubhub.com/"
     },
     {
       title: "NatalCare Hub",
       description: "A PoC application designed to empower expecting mothers with comprehensive prenatal care tools and resources, making pregnancy management more accessible and informed.",
       tags: ["React", "Node.js", "Healthcare", "UI/UX", "Mobile-First"],
-      image: "/placeholder.svg",
+      image: natalCareImage,
       githubLink: "https://github.com/raaj2045/natalcare-hub",
       liveLink: "https://natalcare-hub.vercel.app/"
+    },
+     {
+      title: "Gandhi School of Engineering",
+      description: "A comprehensive educational institution website built with modern web technologies. Features include dynamic course catalog, student portal integration, responsive design, and interactive campus tour showcasing state-of-the-art facilities.",
+      tags: ["Wordpress", "PHP", "SQL", "Elementor", "UI/UX", "Mobile-First"],
+      image: gseImage,
+      githubLink: null,
+      liveLink: "https://gse.ac.in/"
     }
   ];
 
@@ -45,7 +57,8 @@ export default function Projects() {
                   />
                   <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                     <div className="flex gap-4">
-                      <a 
+                     {project.githubLink && (
+                       <a 
                         href={project.githubLink} 
                         target="_blank" 
                         rel="noopener noreferrer"
@@ -53,6 +66,8 @@ export default function Projects() {
                       >
                         <Github className="w-6 h-6" />
                       </a>
+                     )}
+
                       {project.liveLink && (
                         <a 
                           href={project.liveLink} 

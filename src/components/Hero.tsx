@@ -14,7 +14,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="home" className="pt-20 min-h-screen flex flex-col justify-center relative overflow-hidden">
+    <section id="home" className="pt-16 min-h-screen flex flex-col justify-center relative overflow-hidden">
       {/* Background GIF for light mode */}
       <div 
         className="absolute inset-0 overflow-hidden opacity-50 dark:opacity-0 transition-opacity duration-300"
@@ -33,17 +33,17 @@ export default function Hero() {
         />
       </div>
 
-      <div className="container mx-auto px-4 py-12 sm:py-20 relative z-10">
-        <div className="w-[50%] h-[40vh] mx-auto text-center bg-white/60 dark:bg-black/60 backdrop-blur-0 p-12 rounded-xl relative flex flex-col justify-center">
+      <div className="container mx-auto px-4 py-8 sm:py-20 relative z-10">
+        <div className="w-full sm:w-[80%] md:w-[70%] lg:w-[60%] h-auto min-h-[40vh] mx-auto text-center bg-white/60 dark:bg-black/60 backdrop-blur-sm p-6 sm:p-12 rounded-xl relative flex flex-col justify-center">
           <div className="relative z-10">
-            <h1 className="font-pixel text-4xl sm:text-5xl mb-8 leading-tight">
+            <h1 className="font-pixel text-3xl sm:text-4xl md:text-5xl mb-6 sm:mb-8 leading-tight">
               <span className="block">Hello World!</span>
               <span className="inline-block text-pixel-green dark:text-pixel-purple animate-float">
                 I'm <span className="text-pixel-purple dark:text-pixel-green">Raaj</span>
               </span>
             </h1>
             
-            <div className="font-pixel-body text-xl sm:text-2xl mb-10 relative animate-pixel-fade">
+            <div className="font-pixel-body text-lg sm:text-xl md:text-2xl mb-8 sm:mb-10 relative animate-pixel-fade">
               <p className="mb-2">
                 &lt;Software Engineer (Full Stack)/&gt;
               </p>

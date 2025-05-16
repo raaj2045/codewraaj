@@ -1,4 +1,3 @@
-
 import {
   HomeIcon,
   User,
@@ -10,11 +9,14 @@ import {
 
 import { Dock, DockItem, DockIcon, DockLabel } from '@/components/ui/dock';
 import { useToast } from '@/hooks/use-toast';
+import { useIsMobile } from '@/hooks/use-mobile';
+import { cn } from '@/lib/utils';
 import { useState, useEffect } from 'react';
 
 export default function PixelDock() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const { toast } = useToast();
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     // Check for system preference or stored preference
@@ -91,29 +93,85 @@ export default function PixelDock() {
   ];
 
   return (
-    <div className='fixed bottom-6 left-1/2 z-50 max-w-full -translate-x-1/2'>
-      <Dock className='items-end pb-3 border-4 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)]'>
-        {navItems.map((item, idx) => (
-          <DockItem
-            key={idx}
-            href={item.href}
-            onClick={(e) => handleNavClick(e, item.href)}
-            className='aspect-square bg-white dark:bg-black'
-          >
-            <DockLabel>{item.title}</DockLabel>
-            <DockIcon>{item.icon}</DockIcon>
-          </DockItem>
-        ))}
-        <DockItem
-          onClick={toggleTheme}
-          className='aspect-square bg-white dark:bg-black'
-        >
-          <DockLabel>{isDarkMode ? 'Light Mode' : 'Dark Mode'}</DockLabel>
-          <DockIcon>
-            <SunMoon className='h-full w-full text-pixel-green dark:text-pixel-purple' />
-          </DockIcon>
-        </DockItem>
-      </Dock>
-    </div>
+    <Dock className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50">
+      <DockItem href="#home" aria-label="Home">
+        <DockIcon>
+          <HomeIcon
+            className={cn(
+              "h-full w-full",
+              isMobile ? "stroke-[2.5]" : "stroke-2"
+            )}
+          />
+        </DockIcon>
+        <DockLabel>Home</DockLabel>
+      </DockItem>
+
+      <DockItem href="#about" aria-label="About">
+        <DockIcon>
+          <User
+            className={cn(
+              "h-full w-full",
+              isMobile ? "stroke-[2.5]" : "stroke-2"
+            )}
+          />
+        </DockIcon>
+        <DockLabel>About</DockLabel>
+      </DockItem>
+
+      <DockItem href="#skills" aria-label="Skills">
+        <DockIcon>
+          <Code2
+            className={cn(
+              "h-full w-full",
+              isMobile ? "stroke-[2.5]" : "stroke-2"
+            )}
+          />
+        </DockIcon>
+        <DockLabel>Skills</DockLabel>
+      </DockItem>
+
+      <DockItem href="#projects" aria-label="Projects">
+        <DockIcon>
+          <FolderGit2
+            className={cn(
+              "h-full w-full",
+              isMobile ? "stroke-[2.5]" : "stroke-2"
+            )}
+          />
+        </DockIcon>
+        <DockLabel>Projects</DockLabel>
+      </DockItem>
+
+      <DockItem href="#contact" aria-label="Contact">
+        <DockIcon>
+          <Mail
+            className={cn(
+              "h-full w-full",
+              isMobile ? "stroke-[2.5]" : "stroke-2"
+            )}
+          />
+        </DockIcon>
+        <DockLabel>Contact</DockLabel>
+      </DockItem>
+
+      <DockItem 
+        href="#"
+        onClick={(e) => {
+          e.preventDefault();
+          toggleTheme();
+        }} 
+        aria-label="Toggle theme"
+      >
+        <DockIcon>
+          <SunMoon
+            className={cn(
+              "h-full w-full",
+              isMobile ? "stroke-[2.5]" : "stroke-2"
+            )}
+          />
+        </DockIcon>
+        <DockLabel>{isDarkMode ? 'Light Mode' : 'Dark Mode'}</DockLabel>
+      </DockItem>
+    </Dock>
   );
 }
